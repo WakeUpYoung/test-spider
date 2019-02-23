@@ -1,7 +1,5 @@
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
-import time
 
 
 class MyHeadless:
@@ -19,10 +17,10 @@ class MyHeadless:
     def getDriver(self, options=True):
         chrome_options = Options()
 
-        # 注释该语句即可视化看到运行过程
         if options:
             chrome_options.add_argument("--headless --disable-gpu")
-            chrome_options.add_argument('user-agent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) '
+            chrome_options.add_argument('user-agent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, '
+                                        'like Gecko) '
                                         'Chrome/71.0.3578.98 Safari/537.36"')
 
         driver = webdriver.Chrome(
