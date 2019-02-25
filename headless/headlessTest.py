@@ -64,6 +64,7 @@ if __name__ == '__main__':
 
         screen_shot = 'full_screen.png'
         driver.save_screenshot(screen_shot)
+        # 保存当前验证码
         crop = Image.open(screen_shot).crop((left, top, right, bottom))
         crop.show()
 
