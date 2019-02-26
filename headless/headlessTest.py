@@ -65,8 +65,10 @@ if __name__ == '__main__':
         screen_shot = 'full_screen.png'
         driver.save_screenshot(screen_shot)
         # 保存当前验证码
-        crop = Image.open(screen_shot).crop((left, top, right, bottom))
-        crop.show()
+        temp_verify_code = Image.open(screen_shot).crop((left, top, right, bottom))
+        temp_verify_code.save('verify_code.png')
+
+
 
     # driver.close()
 

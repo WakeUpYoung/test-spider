@@ -11,7 +11,7 @@ def get_file_content(filePath):
 
 
 if __name__ == '__main__':
-    img_path = r'C:\Users\Ste\Desktop\graduation design\pin2.png'
+    img_path = r'verify_code.png'
     # 灰度读取
     img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
     ret, binary = cv2.threshold(src=img, thresh=0, maxval=255, type=cv2.THRESH_BINARY | cv2.THRESH_TRIANGLE)
@@ -28,7 +28,7 @@ if __name__ == '__main__':
     print(line)
 
     for x1, y1, x2, y2 in line:
-        cv2.line(grey, (x1, y1), (x2, y2), (255, 255, 255), 2)
+        cv2.line(grey, (x1, y1), (x2, y2), (0, 255, 0), 2)
     cv2.imshow('result', grey)
     k = cv2.waitKey(0)  # waitkey代表读取键盘的输入，括号里的数字代表等待多长时间，单位ms。 0代表一直等待
     if k == 27:  # 键盘上Esc键的键值

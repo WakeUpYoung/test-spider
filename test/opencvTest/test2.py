@@ -32,7 +32,7 @@ for x in range(1, w - 1):
                 black_point += 1
             if right_pixel == 0:
                 black_point += 1
-            if black_point <= 2:
+            if black_point <= 1:
                 im.putpixel((x, y), 255)
                 print(black_point)
             black_point = 0
