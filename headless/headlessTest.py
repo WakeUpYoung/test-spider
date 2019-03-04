@@ -26,7 +26,14 @@ if __name__ == '__main__':
     # 天猫的登录页面是在Iframe里的
     # driver.switch_to.frame('J_loginIframe')
     login_info = driver.find_element_by_css_selector('#J_QRCodeLogin > div.login-title')
+    webdriver_false = """ Object.defineProperties(navigator,{
+             webdriver:{
+               get: () => false
+             }
+           })"""
+    driver.execute_script(script=webdriver_false)
     print('the panel info is', str(login_info.text))
+    # 如果一开始是扫码页面
     if str(login_info.text) == '手机扫码，安全登录':
         login_with_text = driver.find_element_by_css_selector('#J_QRCodeLogin > div.login-links > '
                                                               'a.forget-pwd.J_Quick2Static')
@@ -68,7 +75,7 @@ if __name__ == '__main__':
 
         expect_element = expected.presence_of_element_located((By.CSS_SELECTOR, "#J_SiteNavLogin > div.site-nav-menu-hd > div.site-nav-user > a"))
         ele = WebDriverWait(driver, 10, ignored_exceptions=NoSuchElementException).until(expect_element, "time out")
-        print(ele)
+        print(ele.text)
 
         # img_location = verify_img.location
         # img_size = verify_img.size
