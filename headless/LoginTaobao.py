@@ -19,10 +19,10 @@ if __name__ == '__main__':
     driver.maximize_window()
     driver.get(headless.url)
     driver.switch_to_frame(t_login_frame)
-    user_name_input = get_element(driver, By.CSS_SELECTOR, '#TPL_username_1')
-    password_input = get_element(driver, By.CSS_SELECTOR, '#TPL_password_1')
-    user_name_input.send_key('13820552740')
-    password_input.send_key('wang254841204')
+    user_name_input = driver.find_element_by_css_selector('#TPL_username_1')
+    password_input = driver.find_element_by_css_selector('#TPL_password_1')
+    user_name_input.send_keys('13820552740')
+    password_input.send_keys('wang254841204')
 
     webdriver_false = """ Object.defineProperties(navigator,{
                  webdriver:{
