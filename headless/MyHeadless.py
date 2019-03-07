@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.options import Options
 
 
 class MyHeadless:
+    # 这里输入自己的谷歌驱动目录
     __driverPath = r'C:\Users\Ste\AppData\Local\Google\Chrome\Application\chromedriver.exe'
     url = 'https://www.baidu.com'
 

@@ -7,9 +7,9 @@ def get_file_content(filePath):
 
 
 if __name__ == '__main__':
-    APP_ID = '15340554'
-    API_KEY = 'f3hvVD2AIjs1V4UyEUh8m7UO'
-    SECRET_KEY = 'iQiSEk0GY3l57Eu5xkdG2sRRzFkkTrSf'
+    APP_ID = '2'
+    API_KEY = '2'
+    SECRET_KEY = '2'
     client = AipOcr(APP_ID, API_KEY, SECRET_KEY)
     image = get_file_content('grey.png')
     options = {}

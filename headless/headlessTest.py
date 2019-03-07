@@ -60,8 +60,8 @@ if __name__ == '__main__':
         login_btn = driver.find_element_by_css_selector('#pl_login_logged > div > div:nth-child(7) > div:nth-child(1) > a')
 
         username_input.clear()
-        username_input.send_keys('13820552740')
-        password_input.send_keys('wang60589537')
+        username_input.send_keys('用户名')
+        password_input.send_keys('密码')
         check_box.click()
         login_btn.click()
 

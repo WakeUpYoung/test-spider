@@ -3,6 +3,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support import expected_conditions as expected
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
+import time
 
 
 def get_element(driver, by, tag_name, time_out=10):
@@ -32,13 +33,20 @@ if __name__ == '__main__':
     print(user_label.text)
 
     goods_name = driver.find_element_by_css_selector('#J_DetailMeta > div.tm-clear > div.tb-property > div > div.tb-detail-hd > h1')
-    print("商品名称:", goods_name)
+    print("商品名称:", goods_name.text)
     comment_num = get_element(driver, By.CSS_SELECTOR, '#J_TabBar > li:nth-child(2) > a > em')
     print("评论数:",comment_num.text)
-    comment_content = driver.find_element_by_css_selector('#J_TabBar > li.tm-selected > a')
-    # 点击评论
-    comment_content.click()
-    tbody = driver.find_elements_by_xpath('//*[@id="J_Reviews"]/div/div[6]/table/tbody/tr')
-    for tr in tbody:
-        comment_text = tr.find_elements_by_xpath('td/div/div')
-        print(comment_text)
+    temp = get_element(driver, By.CSS_SELECTOR, '#description > div > p:nth-child(3) > span')
+    print(temp.text)
+    # 评论头
+    reviews_title = get_element(driver, By.CSS_SELECTOR, '#J_Reviews > h4')
+    scroll_script = """arguments[0].scrollIntoView();"""
+    # 评论数据所在元素是动态加载的，我们需要先让屏幕滚动到评论所在
+    driver.execute_script(scroll_script, reviews_title)
+    time.sleep(3)
+    # 评论所在div
+    rate_grid = get_element(driver, By.CSS_SELECTOR, '#J_Reviews > div > div.rate-grid')
+    trs = rate_grid.find_elements_by_css_selector("table > tbody > tr")
+    for tr in trs:
+        rate_content = tr.find_element_by_css_selector('td.tm-col-master > div.tm-rate-content > div.tm-rate-fulltxt')
+        print(rate_content.text)
